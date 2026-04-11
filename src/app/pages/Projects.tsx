@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ExternalLink, FlaskConical, Cpu, Glasses, MapPin, Utensils, Monitor, FolderOpen } from "lucide-react";
 
@@ -23,7 +24,7 @@ export default function Projects() {
         "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317ef70f2c3a950cf279_ingcover.jpg",
       icon: FlaskConical,
       tags: ["Customer Research", "Lean UX", "Ideation"],
-      link: "#",
+      link: "/projects/ing",
     },
     {
       id: 2,
@@ -156,13 +157,13 @@ export default function Projects() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-4 right-4">
-                      <a
-                        href={project.link}
-                        className="p-3 bg-[#FFC133] border-4 border-[#374151] text-[#374151] hover:bg-[#FF8A5B] transition-colors"
+                      <Link
+                        to={project.link}
+                        className="p-3 bg-[#FFC133] border-4 border-[#374151] text-[#374151] hover:bg-[#FF8A5B] transition-colors block"
                         aria-label="View project"
                       >
                         <ExternalLink size={20} />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="p-6">
