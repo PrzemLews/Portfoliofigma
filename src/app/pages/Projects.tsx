@@ -1,88 +1,100 @@
 import { useState } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { ExternalLink, Smartphone, Globe, ShoppingCart, Layout } from "lucide-react";
+import { ExternalLink, FlaskConical, Cpu, Glasses, MapPin, Utensils, Monitor, FolderOpen } from "lucide-react";
 
 export default function Projects() {
   const [filter, setFilter] = useState("all");
 
   const categories = [
     { id: "all", label: "All Projects" },
-    { id: "mobile", label: "Mobile Apps" },
-    { id: "web", label: "Web Design" },
-    { id: "ecommerce", label: "E-Commerce" },
+    { id: "research", label: "UX Research" },
+    { id: "design", label: "UX/UI Design" },
+    { id: "other", label: "Other" },
   ];
 
   const projects = [
     {
       id: 1,
-      title: "HealthTrack Mobile App",
-      category: "mobile",
+      title: "ING Netherlands",
+      category: "research",
       description:
-        "A comprehensive health tracking app that helps users monitor their fitness goals, nutrition, and wellness journey.",
+        "This is a story about working in the ING headquaters' startup accelerator. The task of my team was validating a business model with mix of different research methods. We followed the ING's custom lean-startup validation framework.",
       image:
-        "https://images.unsplash.com/photo-1661246627162-feb0269e0c07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2UlMjBkZXNpZ258ZW58MXx8fHwxNzc0NDc4MTAwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      icon: Smartphone,
-      tags: ["Mobile", "Healthcare", "iOS/Android"],
+        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317ef70f2c3a950cf279_ingcover.jpg",
+      icon: FlaskConical,
+      tags: ["Customer Research", "Lean UX", "Ideation"],
       link: "#",
     },
     {
       id: 2,
-      title: "EduLearn Platform",
-      category: "web",
+      title: "Ericsson IoT",
+      category: "research",
       description:
-        "An online learning platform designed to provide seamless educational experiences for students and educators.",
+        "I looked for a way to improve experience in participating in a design process of IoT systems. As a result of individual interviews and RITE testing I designed IoT Solution Advisor - a platform for matching system requirements with an IoT technology stack.",
       image:
-        "https://images.unsplash.com/photo-1707836868495-3307d371aba4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwZGVzaWduJTIwbW9ja3VwJTIwc2NyZWVufGVufDF8fHx8MTc3NDQyNDU0MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      icon: Globe,
-      tags: ["Web", "Education", "SaaS"],
+        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/61030d6e7ff1602f83c7a8e2_erikson2.png",
+      icon: Cpu,
+      tags: ["Customer Research", "Iterative Prototyping"],
       link: "#",
     },
     {
       id: 3,
-      title: "StyleHub E-Commerce",
-      category: "ecommerce",
+      title: "UX Research in VR",
+      category: "research",
       description:
-        "A modern fashion e-commerce platform with intuitive navigation and personalized shopping experiences.",
+        "Here we designed and developed simple VR app. Later I conducted usability tests with 8 participants. The goal of the project was to compare usability attributes of different navigation menus in context of Virtual Reality.",
       image:
-        "https://images.unsplash.com/photo-1698434156098-68e834638679?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1c2VyJTIwZXhwZXJpZW5jZSUyMGRlc2lnbiUyMHdpcmVmcmFtZXxlbnwxfHx8fDE3NzQ0Mjg0MTh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      icon: ShoppingCart,
-      tags: ["E-Commerce", "Fashion", "Responsive"],
+        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317f629928f84e0f3b3f_vrcover.png",
+      icon: Glasses,
+      tags: ["VR", "Usability Tests", "Scientific Research"],
       link: "#",
     },
     {
       id: 4,
-      title: "TaskFlow Productivity",
-      category: "web",
+      title: "AR Navigation",
+      category: "research",
       description:
-        "A project management tool that streamlines team collaboration and boosts productivity through smart workflows.",
+        "This non-commercial project taught me how to deal with physical space and AR technology, designing for smartwatch, as well as museum customer experience. Due to COVID issues I also learnt more about the remote user research.",
       image:
-        "https://images.unsplash.com/photo-1742440711276-679934f5b988?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHRlYW0lMjBjb2xsYWJvcmF0aW9uJTIwZGVzaWdufGVufDF8fHx8MTc3NDQ4MTM1Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      icon: Layout,
-      tags: ["Web", "Productivity", "B2B"],
+        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e4d5af21060f0c9d3_arcover.jpg",
+      icon: MapPin,
+      tags: ["UX Research", "AR", "Rapid Prototyping"],
       link: "#",
     },
     {
       id: 5,
-      title: "FoodDelight App",
-      category: "mobile",
+      title: "UX & Food Allergy",
+      category: "design",
       description:
-        "A food delivery app with an emphasis on quick ordering, real-time tracking, and delightful micro-interactions.",
+        "My university designed a non-commercial product for those, who can't eat everything. Thanks to the database of products, our users could go exactly, where they would find everything that they need and stay inspired for their daily diet.",
       image:
-        "https://images.unsplash.com/photo-1753162657332-4f061398c38c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwbGFwdG9wfGVufDF8fHx8MTc3NDUzNTQ0MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      icon: Smartphone,
-      tags: ["Mobile", "Food", "On-Demand"],
+        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109612e8870c62666a65f78_squirrel.jpg",
+      icon: Utensils,
+      tags: ["UX Research", "UX+UI Design"],
       link: "#",
     },
     {
       id: 6,
-      title: "TechStore Marketplace",
-      category: "ecommerce",
+      title: "PSE Innovation",
+      category: "design",
       description:
-        "An electronics marketplace featuring advanced filtering, comparison tools, and personalized recommendations.",
+        "The project required UX analysis of a few ERP systems, designing a new system which integrates functionalities of previous ones. Additionally, we created a new design system for future products of PSE Innovation.",
       image:
-        "https://images.unsplash.com/photo-1666618207644-4de0226a3f85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBtaW5pbWFsaXN0JTIwd29ya3NwYWNlJTIwZGVzaWdufGVufDF8fHx8MTc3NDUzNTQ0MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      icon: ShoppingCart,
-      tags: ["E-Commerce", "Tech", "Marketplace"],
+        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e3e51cbc7dbd228bf_psecover.jpg",
+      icon: Monitor,
+      tags: ["UX Audit", "UX+UI Design"],
+      link: "#",
+    },
+    {
+      id: 7,
+      title: "Other Projects",
+      category: "other",
+      description:
+        "Here you can find the list of shorter projects or those which I consider less important or couldn't be described in details (because of NDA issues). This folder includes extra commercial projects and non-commercial.",
+      image:
+        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/61040d72bf74a0e0f9ca5b4b_others2.jpg",
+      icon: FolderOpen,
+      tags: ["Customer Research", "Lean UX", "Ideation"],
       link: "#",
     },
   ];
