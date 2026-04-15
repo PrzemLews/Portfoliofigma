@@ -106,12 +106,12 @@ export default function Projects() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-[#FFF8F0] py-20 border-b-8 border-[#374151]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-[#FFF8F0] py-20 border-b-4 border-[#374151]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <h1 className="text-[60px] font-bold text-[#261d08] mb-6 leading-[60px]">
-            MY <span className="bg-[#FFC133] px-4 py-2 border-4 border-[#374151]">PROJECTS</span>
+            My Cases
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto border-l-6 border-[#FF8A5B] pl-4 inline-block text-left">
+          <p className="text-xl text-gray-600 max-w-3xl">
             A collection of my recent work showcasing user-centered design solutions
             across various industries and platforms.
           </p>
@@ -119,27 +119,7 @@ export default function Projects() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-12 bg-white border-b-4 border-[#374151]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setFilter(category.id)}
-                className={`px-6 py-3 border-4 border-[#374151] font-bold transition-all ${
-                  filter === category.id
-                    ? "bg-[#FFC133] text-[#374151] translate-y-[-4px]"
-                    : "bg-white text-[#374151] hover:bg-[#FFF8F0] hover:translate-y-[-2px]"
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Grid */}
+{/* Projects Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -148,39 +128,48 @@ export default function Projects() {
               return (
                 <div key={project.id} className="relative group">
                   <div className="absolute inset-0 bg-[#FFC133] group-hover:bg-[#F09065] transform translate-x-4 translate-y-4 border-4 border-[#374151] transition-colors"></div>
-                  <div className="relative bg-white border-4 border-[#374151] overflow-hidden">
-                    <div className="relative overflow-hidden aspect-video border-b-4 border-[#374151]">
+                  <div
+                    className="relative bg-white border-4 border-[#374151] overflow-hidden group cursor-pointer"
+                    onClick={() => {
+                      if (project.link && project.link !== '#') {
+                        if (project.link.startsWith('http')) {
+                          window.open(project.link, '_blank');
+                        } else {
+                          window.location.href = project.link;
+                        }
+                      }
+                    }}
+                  >
+                    <div className="relative overflow-hidden aspect-[16/12] border-b-4 border-[#374151]">
                       <ImageWithFallback
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute top-4 right-4">
+                      <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                        {project.tags.map((tag, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 bg-[#FFF8F0] text-[#374151] border-2 border-[#374151] text-sm font-bold"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="p-6 relative">
+                      <div className="absolute top-6 right-6">
                         <Link
                           to={project.link}
-                          className="p-3 bg-[#FFC133] border-4 border-[#374151] text-[#374151] hover:bg-[#FF8A5B] transition-colors block"
+                          className="p-3 bg-[#FFC133] border-4 border-[#374151] text-[#374151] hover:bg-[#FF8A5B] group-hover:bg-[#FF8A5B] transition-colors block shrink-0"
                           aria-label="View project"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <ExternalLink size={20} />
                         </Link>
                       </div>
-                    </div>
-                    <div className="flex flex-wrap gap-2 px-6 pt-4 border-b-4 border-[#374151] pb-4">
-                      {project.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-[#FFF8F0] text-[#374151] border-2 border-[#374151] text-sm font-bold"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 bg-[#FFC133] border-4 border-[#374151] flex items-center justify-center mr-3">
-                          <Icon size={20} className="text-[#374151]" />
-                        </div>
-                        <h3 className="text-[40px] font-bold text-[#261d08] border-b-4 border-[#FF8A5B] pb-1">
+                      <div className="mb-3">
+                        <h3 className="text-[40px] font-bold text-[#261d08] border-b-4 border-[#FF8A5B] pb-1 pr-16">
                           {project.title}
                         </h3>
                       </div>

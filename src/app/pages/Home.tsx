@@ -73,7 +73,7 @@ export default function Home() {
                   to="/projects"
                   className="inline-flex items-center justify-center px-6 py-3 bg-[#FFC133] text-[#374151] border-4 border-[#374151] hover:bg-[#FF8A5B] transition-all font-bold text-[16px] leading-[24px] tracking-[-0.3125px]"
                 >
-                  VIEW MY WORK
+                  VIEW MY CASES
                 </Link>
               </div>
             </div>
