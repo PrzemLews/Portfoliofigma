@@ -48,22 +48,28 @@ export default function About() {
 
   const experience = [
     {
-      role: "Senior UX Designer",
+      role: "Settling in Prague",
       company: "TechCorp Solutions",
-      period: "2023 - Present",
+      period: "2021 - Present",
       description: "Leading design initiatives for B2B SaaS products",
     },
     {
-      role: "UX Designer",
+      role: "Human-Computer Interaction studies",
       company: "Digital Innovations",
-      period: "2021 - 2023",
+      period: "2019-2021",
       description: "Designed mobile and web applications for e-commerce clients",
     },
     {
-      role: "Junior UX Designer",
+      role: "Software Testing, UX Postgraduate studies",
       company: "Creative Studio",
-      period: "2019 - 2021",
-      description: "Supported senior designers in user research and prototyping",
+      period: "2016-2017",
+      description: "During this period, I had my first IT job as a software tester, which gave me knowledge on how to collaborate with PMs and developers, and how to work in Scrum. I also got interested in UX, and quite quickly signed up for User Experience Design studies. There I learned in practice the end-to-end double diamond process, but also about formulating business models.",
+    },
+    {
+      role: "Technical University and AIESEC Member",
+      company: "Design Lab",
+      period: "2012-2016",
+      description: "During my bachelor's/engineering studies, I gained confidence in acquiring technical knowledge. I had some programming classes there, including website engineering. But what made that period more interesting was my membership in the student association AIESEC. In that organisation, I was responsible for promoting AIESEC student exchange programs and providing customer service for students who decided to participate in them.",
     },
   ];
 
@@ -85,7 +91,7 @@ export default function About() {
               <div className="absolute inset-0 bg-[#FFC133] transform translate-x-6 translate-y-6 border-4 border-[#374151]"></div>
               <div className="relative border-4 border-[#374151] overflow-hidden">
                 <ImageWithFallback
-                  src="/Portfoliofigma/jabiureczko-1.png"
+                  src="/UX-Portfolio/jabiureczko-1.png"
                   alt="Workspace"
                   className="w-full aspect-square object-cover"
                 />
@@ -100,43 +106,20 @@ export default function About() {
                 <Chip label="Developer Experience" />
                 <Chip label="Banking" />
               </div>
-              <p className="text-lg text-gray-600 bg-[#FFC133] p-4 border-4 border-[#374151]">
-                <strong>Fun fact:</strong> Apart from work, I like to spend my time pursuing my hobbies: Making electronic music, gym, psychology, painting, RPG games.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Fun Fact Section */}
       <section className="py-20 bg-[#374151] border-y-4 border-[#FFC133]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-[48px] font-bold text-[#FFC133] mb-4 inline-block border-b-8 border-[#FFC133] pb-2">
-              MY VALUES
-            </h2>
-            <p className="text-xl text-white mt-4">The principles that guide my work</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <div
-                  key={index}
-                  className="text-center p-6 bg-[#374151] border-3 border-[#FFC133]"
-                >
-                  <div className="w-16 h-16 mx-auto bg-[#FFC133] border-4 border-[#FFC133] flex items-center justify-center mb-4">
-                    <Icon size={32} className="text-[#374151]" />
-                  </div>
-                  <h3 className="text-[32px] font-bold text-[#FFC133] mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-white mt-4">{value.description}</p>
-                </div>
-              );
-            })}
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-[48px] font-bold text-[#FFC133] mb-8 inline-block border-b-8 border-[#FFC133] pb-2">
+            Fun fact
+          </h2>
+          <p className="text-xl text-white leading-relaxed mt-4">
+            Apart from work, I like to spend my time pursuing my hobbies: Making electronic music, gym, psychology, painting, RPG games.
+          </p>
         </div>
       </section>
 
@@ -144,27 +127,30 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-[48px] font-bold text-[#261d08] mb-4 inline-block border-b-8 border-[#FFC133] pb-2">My journey to UX</h2>
+            <h2 className="text-[48px] font-bold text-[#261d08] mb-4 inline-block border-b-8 border-[#FFC133] pb-2">My Career Journey</h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-12">
             {experience.map((exp, index) => (
               <div
                 key={index}
-                className="relative pl-12 pb-8 border-l-6 border-[#FFC133] last:pb-0"
+                className="relative pl-12 border-l-6 border-[#FFC133]"
               >
                 <div className="absolute left-[-14px] top-0 w-6 h-6 bg-[#FFC133] border-4 border-[#374151]"></div>
-                <div className="bg-[#FFF8F0] p-6 border-4 border-[#374151]">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                    <h3 className="text-[40px] font-bold text-[#261d08] border-b-4 border-[#FFC133] inline-block pb-1">
-                      {exp.role}
-                    </h3>
-                    <span className="bg-[#FF8A5B] text-white px-3 py-1 font-bold border-2 border-[#374151] mt-2 sm:mt-0 inline-block">
-                      {exp.period}
-                    </span>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-[#FFC133] transform translate-x-4 translate-y-4 border-4 border-[#374151]"></div>
+                  <div className="relative p-8 bg-white border-4 border-[#374151]">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-4">
+                      <h3 className="font-bold text-[#261d08] inline text-[36px]" style={{ textDecoration: 'underline', textDecorationColor: '#FFC133', textDecorationThickness: '4px', textUnderlineOffset: '2px' }}>
+                        {exp.role}
+                      </h3>
+                      <div className="shrink-0 flex flex-col gap-2">
+                        <Chip label={exp.period} />
+                        {exp.extraPeriod && <Chip label={exp.extraPeriod} />}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 mt-4">{exp.description}</p>
                   </div>
-                  <p className="text-lg text-gray-600 mb-2 font-bold mt-4">{exp.company}</p>
-                  <p className="text-gray-600">{exp.description}</p>
                 </div>
               </div>
             ))}

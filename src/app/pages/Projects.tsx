@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { ExternalLink, FlaskConical, Cpu, Glasses, MapPin, Utensils, Monitor, FolderOpen } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { cases } from "../data/cases";
 
 export default function Projects() {
   const [filter, setFilter] = useState("all");
@@ -14,92 +15,10 @@ export default function Projects() {
     { id: "other", label: "Other" },
   ];
 
-  const projects = [
-    {
-      id: 1,
-      title: "ING Netherlands",
-      category: "research",
-      description:
-        "This is a story about working in the ING headquaters' startup accelerator. The task of my team was validating a business model with mix of different research methods. We followed the ING's custom lean-startup validation framework.",
-      image:
-        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317ef70f2c3a950cf279_ingcover.jpg",
-      icon: FlaskConical,
-      tags: ["Customer Research", "Lean UX", "Ideation"],
-      link: "/projects/ing",
-    },
-    {
-      id: 2,
-      title: "Ericsson IoT",
-      category: "research",
-      description:
-        "I looked for a way to improve experience in participating in a design process of IoT systems. As a result of individual interviews and RITE testing I designed IoT Solution Advisor - a platform for matching system requirements with an IoT technology stack.",
-      image:
-        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/61030d6e7ff1602f83c7a8e2_erikson2.png",
-      icon: Cpu,
-      tags: ["Customer Research", "Iterative Prototyping"],
-      link: "#",
-    },
-    {
-      id: 3,
-      title: "UX Research in VR",
-      category: "research",
-      description:
-        "Here we designed and developed simple VR app. Later I conducted usability tests with 8 participants. The goal of the project was to compare usability attributes of different navigation menus in context of Virtual Reality.",
-      image:
-        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317f629928f84e0f3b3f_vrcover.png",
-      icon: Glasses,
-      tags: ["VR", "Usability Tests", "Scientific Research"],
-      link: "#",
-    },
-    {
-      id: 4,
-      title: "AR Navigation",
-      category: "research",
-      description:
-        "This non-commercial project taught me how to deal with physical space and AR technology, designing for smartwatch, as well as museum customer experience. Due to COVID issues I also learnt more about the remote user research.",
-      image:
-        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e4d5af21060f0c9d3_arcover.jpg",
-      icon: MapPin,
-      tags: ["UX Research", "AR", "Rapid Prototyping"],
-      link: "#",
-    },
-    {
-      id: 5,
-      title: "UX & Food Allergy",
-      category: "design",
-      description:
-        "My university designed a non-commercial product for those, who can't eat everything. Thanks to the database of products, our users could go exactly, where they would find everything that they need and stay inspired for their daily diet.",
-      image:
-        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109612e8870c62666a65f78_squirrel.jpg",
-      icon: Utensils,
-      tags: ["UX Research", "UX+UI Design"],
-      link: "#",
-    },
-    {
-      id: 6,
-      title: "PSE Innovation",
-      category: "design",
-      description:
-        "The project required UX analysis of a few ERP systems, designing a new system which integrates functionalities of previous ones. Additionally, we created a new design system for future products of PSE Innovation.",
-      image:
-        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e3e51cbc7dbd228bf_psecover.jpg",
-      icon: Monitor,
-      tags: ["UX Audit", "UX+UI Design"],
-      link: "#",
-    },
-    {
-      id: 7,
-      title: "Other Projects",
-      category: "other",
-      description:
-        "Here you can find the list of shorter projects or those which I consider less important or couldn't be described in details (because of NDA issues). This folder includes extra commercial projects and non-commercial.",
-      image:
-        "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/61040d72bf74a0e0f9ca5b4b_others2.jpg",
-      icon: FolderOpen,
-      tags: ["Customer Research", "Lean UX", "Ideation"],
-      link: "#",
-    },
-  ];
+  const projects = cases.map((c) => ({
+    ...c,
+    link: `/projects/${c.slug}`,
+  }));
 
   const filteredProjects =
     filter === "all" ? projects : projects.filter((p) => p.category === filter);
@@ -115,21 +34,12 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => {
-              const Icon = project.icon;
               return (
                 <div key={project.id} className="relative group">
                   <div className="absolute inset-0 bg-[#FFC133] group-hover:bg-[#F09065] transform translate-x-4 translate-y-4 border-4 border-[#374151] transition-colors"></div>
                   <div
                     className="relative bg-white border-4 border-[#374151] overflow-hidden group cursor-pointer"
-                    onClick={() => {
-                      if (project.link && project.link !== '#') {
-                        if (project.link.startsWith('http')) {
-                          window.open(project.link, '_blank');
-                        } else {
-                          navigate(project.link);
-                        }
-                      }
-                    }}
+                    onClick={() => navigate(project.link)}
                   >
                     <div className="relative overflow-hidden aspect-[16/12] border-b-4 border-[#374151]">
                       <ImageWithFallback

@@ -2,16 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X, ChevronDown } from "lucide-react";
 import LogoIcon from "./LogoIcon";
+import { cases as caseData } from "../data/cases";
 
-const cases = [
-  { label: "ING Netherlands", link: "/projects/ing" },
-  { label: "Ericsson IoT", link: "#" },
-  { label: "UX Research in VR", link: "#" },
-  { label: "AR Navigation", link: "#" },
-  { label: "UX & Food Allergy", link: "#" },
-  { label: "PSE Innovation", link: "#" },
-  { label: "Other Projects", link: "#" },
-];
+const cases = caseData.map((c) => ({ label: c.title, link: `/projects/${c.slug}` }));
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

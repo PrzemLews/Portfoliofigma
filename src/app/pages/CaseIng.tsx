@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -17,13 +17,34 @@ const DOT_COUNT = 5;
 export default function CaseIng() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeDot, setActiveDot] = useState(0);
+  const velocityRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
 
-  function handleWheel(e: React.WheelEvent) {
-    if (scrollRef.current) {
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
       e.preventDefault();
-      scrollRef.current.scrollLeft += e.deltaY + e.deltaX;
-    }
-  }
+      velocityRef.current += (e.deltaY + e.deltaX) * 0.8;
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      const animate = () => {
+        if (!scrollRef.current) return;
+        scrollRef.current.scrollLeft += velocityRef.current;
+        velocityRef.current *= 0.85;
+        if (Math.abs(velocityRef.current) > 0.5) {
+          rafRef.current = requestAnimationFrame(animate);
+        } else {
+          velocityRef.current = 0;
+        }
+      };
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   function handleScroll() {
     if (!scrollRef.current) return;
@@ -127,13 +148,13 @@ export default function CaseIng() {
           <h2 className="text-[48px] font-bold text-[#FFC133] mb-10 leading-tight">
             Process
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-[17px]">
             {/* Phase 1 */}
             <div className="p-6">
               <ImageWithFallback
                 src="https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6104639f2f3ee94b66347ddc_loupe.png"
                 alt=""
-                className="w-[100px] h-[100px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
+                className="w-[130px] h-[130px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
               />
               <p className="text-base text-gray-300 leading-relaxed w-full">
                 <a href="#phase-one" className="text-[#FFC133] underline hover:text-[#F09065] transition-colors"><strong>Lorem ipsum – Phase one</strong></a>
@@ -150,7 +171,7 @@ export default function CaseIng() {
               <ImageWithFallback
                 src="https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109bdd46ca2ebce89a4c6bc_growth.png"
                 alt=""
-                className="w-[100px] h-[100px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
+                className="w-[130px] h-[130px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
               />
               <p className="text-base text-gray-300 leading-relaxed w-full">
                 <a href="#phase-two" className="text-[#FFC133] underline hover:text-[#F09065] transition-colors"><strong>Lorem ipsum – Phase two</strong></a>
@@ -164,7 +185,7 @@ export default function CaseIng() {
               <ImageWithFallback
                 src="https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6104639f2f3ee94b66347ddc_loupe.png"
                 alt=""
-                className="w-[100px] h-[100px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
+                className="w-[130px] h-[130px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
               />
               <p className="text-base text-gray-300 leading-relaxed w-full">
                 <a href="#phase-three" className="text-[#FFC133] underline hover:text-[#F09065] transition-colors"><strong>Lorem ipsum – Phase three</strong></a>
@@ -181,7 +202,7 @@ export default function CaseIng() {
               <ImageWithFallback
                 src="https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109bdd46ca2ebce89a4c6bc_growth.png"
                 alt=""
-                className="w-[100px] h-[100px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
+                className="w-[130px] h-[130px] object-contain mb-4" style={{filter: 'brightness(0) saturate(100%) invert(79%) sepia(59%) saturate(700%) hue-rotate(358deg) brightness(103%)'}}
               />
               <p className="text-base text-gray-300 leading-relaxed w-full">
                 <a href="#phase-four" className="text-[#FFC133] underline hover:text-[#F09065] transition-colors"><strong>Lorem ipsum – Phase four</strong></a>
@@ -294,10 +315,9 @@ export default function CaseIng() {
           </div>
           <div
             ref={scrollRef}
-            onWheel={handleWheel}
             onScroll={handleScroll}
-            className="flex gap-8 overflow-x-auto pb-6 cursor-grab active:cursor-grabbing scroll-smooth"
-            style={{ scrollbarWidth: "none" }}
+            className="flex gap-8 overflow-x-auto pb-6 cursor-grab active:cursor-grabbing"
+            style={{ scrollbarWidth: "none", willChange: "scroll-position" }}
           >
             {otherProjects.map((p) => (
               <div key={p.title} className="relative group flex-shrink-0 w-[340px]">
