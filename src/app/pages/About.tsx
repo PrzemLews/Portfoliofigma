@@ -1,6 +1,7 @@
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Award, Heart, Target, Briefcase } from "lucide-react";
 import Chip from "../../imports/Chip-76-20";
+import profilePhoto from "/jabiureczko-1.png";
 
 export default function About() {
   const skills = [
@@ -91,7 +92,7 @@ export default function About() {
               <div className="absolute inset-0 bg-[#FFC133] transform translate-x-6 translate-y-6 border-4 border-[#374151]"></div>
               <div className="relative border-4 border-[#374151] overflow-hidden">
                 <ImageWithFallback
-                  src="/UX-Portfolio/jabiureczko-1.png"
+                  src={profilePhoto}
                   alt="Workspace"
                   className="w-full aspect-square object-cover"
                 />
