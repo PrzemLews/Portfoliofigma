@@ -65,7 +65,7 @@ const ITERATION = "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6
 
 export const cases: CaseData[] = [
   {
-    slug: "ing",
+    slug: "vendors",
     id: 1,
     title: "Vendor Validation Solution",
     subtitle: "UX-driven Business Transformation",
@@ -77,8 +77,20 @@ export const cases: CaseData[] = [
     tags: ["Business Transformation", "Co-Design", "Comprehension Testing"],
   },
   {
-    slug: "ericsson",
+    slug: "ai-validation",
     id: 2,
+    title: "AI-based validation in forms",
+    subtitle: "Utilising GenAI where education, supporting materials, and providing examples failed",
+    category: "research",
+    description:
+      "Despite webinars, tooltips and reframed questions, users kept getting their open-ended form answers rejected. I talked to the reviewers, figured out what was actually going wrong, and designed a solution where AI tells users what's off — without fixing it for them.",
+    image: "/UX-Portfolio/ar-cover.png",
+    icon: Cpu,
+    tags: ["GenAI", "UX Research", "ERP"],
+  },
+  {
+    slug: "ericsson",
+    id: 3,
     title: "Ericsson IoT",
     subtitle: "How to improve an IoT design process?",
     category: "research",
@@ -495,17 +507,177 @@ export const cases: CaseData[] = [
     },
   },
   {
-    slug: "ar",
-    id: 4,
-    title: "AR Navigation",
-    subtitle: "Utilising GenAI where education, supporting materials, and providing examples failed",
-    category: "research",
+    slug: "pse",
+    id: 6,
+    title: "PSE Innovation",
+    subtitle: "UX supporting Polish power lines",
+    category: "design",
     description:
-      "This non-commercial project taught me how to deal with physical space and AR technology, designing for smartwatch, as well as museum customer experience. Due to COVID issues I also learnt more about the remote user research.",
+      "The project required UX analysis of a few ERP systems, designing a new system which integrates functionalities of previous ones. Additionally, we created a new design system for future products of PSE Innovation.",
     image:
-      "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e4d5af21060f0c9d3_arcover.jpg",
-    icon: MapPin,
-    tags: ["UX Research", "AR", "Rapid Prototyping"],
+      "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e3e51cbc7dbd228bf_psecover.jpg",
+    icon: Monitor,
+    tags: ["UX Audit", "UX+UI Design"],
+    details: {
+      heroTitle: "PSE Innovation",
+      overview:
+        "The client of this project was a Polish public entity providing IT solutions for the energy sector. My task was to analyze their existing systems, indicate areas for improvement in the usability area, and then create an exemplary ERP application with corresponding system design. The new project was supposed to become a role-model system for improving existing applications and creating new ones. At every stage, I consulted progress with the client and its programmers. An important aspect of the project was an explanation of design decisions and customer education in the field of usability.",
+      context: [
+        { label: "Contribution:", value: "Usability analysis, hi-fi prototyping, negotiations with the customer" },
+        { label: "Context:", value: "Commercial project, with PSE Innovation" },
+        { label: "Team size:", value: "3 people (+ PM and UI designer)" },
+        { label: "Dates:", value: "06.2018 – 08.2018" },
+        { label: "Tools:", value: "Adobe XD" },
+      ],
+      mainOutcomes: {
+        heading: "The main deliverables / learning points",
+        items: [
+          "The audit was very extensive – it included 3 different ERP systems that were designed by programmers, so in consequence the systems had to be redesigned from scratch.",
+          "ERP systems used a multi-level data structure, which was a serious challenge in visualization and designing interaction for each level of data.",
+          "It was a cooperation with a client inexperienced in UX design, so translating the project and comparing different solutions was very important to establish further success of the project.",
+          "The process of creating system design – it turns out that it should be an iterative process, and a good design system should be created based on the needs of the system, which clarified continuously during the project.",
+        ],
+        outro:
+          "As a result of the cooperation, high-fidelity mock-ups of an exemplary ERP system were created, together with the design of the system and a description of interactions. The client planned to use them in its future projects.",
+      },
+      processCards: [
+        {
+          iconSrc: LOUPE,
+          anchor: "phase-one",
+          title: "Exploration",
+          lines: ["Review of stakeholder needs", "Usability audit"],
+        },
+        {
+          iconSrc: LAYOUT,
+          anchor: "phase-two",
+          title: "Modelling / prototype",
+          lines: ["Medium-fi mockups", "Design system"],
+        },
+      ],
+      phaseSections: [
+        {
+          id: "phase-one",
+          title: "Exploration",
+          blocks: [
+            {
+              type: "p",
+              html: "Our team was requested to help improve ERP solutions developed by PSE Innovation – a Polish public entity created to support power-network companies and their employees. They had already designed and developed 3 different systems, but without the help of any UX specialist. Apart from major usability problems, the lack of a coherent design system implied difficulties with further development. Our promise was to deliver knowledge and tools which would help them to create better systems.",
+            },
+            {
+              type: "p",
+              html: "As a first step, my colleague delivered training about usability and user experience to the whole team of PSE Innovation – developers, project managers, system analysts. We wanted to make sure that the PSE team would not only listen to our advice, but would co-create the system with us. The next big step was 100% my task – usability evaluation of all systems. As a reference source, I used Nielsen's Heuristics, Gestalt design principles and industrial benchmarks. During that phase, I discovered 32 areas for improvement, including 13 of the most crucial ones. Here are some examples of them:",
+            },
+            { type: "h3", text: "Problem 1 — Generic, non-contextual copy on buttons related to undo, overwrite and deleting data (or interrupting processes)" },
+            {
+              type: "p",
+              html: "In the case of confirmation pop-ups it's better to use customized messages and texts on the buttons. There was also inconsistent use of red colour for buttons – once it was used for closing a pop-up window, another time for deleting data.",
+            },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610466c7384a70f0e48de2bd_pse1.png",
+                alt: "Screenshot with visualisation of problems with the buttons",
+                caption: "Screenshot with visualisation of problems with the buttons.",
+              },
+            },
+            { type: "h3", text: "Problem 2 — Using many \"saving buttons\" on the same screen" },
+            {
+              type: "p",
+              html: "Due to nesting multiple forms on the same page, users might be confused whether they should use only one or more buttons, and what is the correct sequence of use – it would be better if there were no nested forms on the same page.",
+            },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6104674925bbb77a4996a6bb_pse2.png",
+                alt: "Screenshot with visualisation of problems with using too many buttons",
+                caption: "Screenshot with visualisation of problems with using too many buttons.",
+              },
+            },
+            { type: "h3", text: "Problem 3 — Major problems with the records filtration mechanism" },
+            {
+              type: "list",
+              items: [
+                "Filtration looked and worked a bit different in each application",
+                "In one system filters were in a place that didn't correspond to related data",
+                "In the case of some tables dynamic filtration was implemented, but in other cases – not",
+                "After applying filters, there was no feedback that they had been applied",
+              ],
+            },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6104677b18905c6ba7ec1aab_pse3.png",
+                alt: "Screenshot showing the problem with the filtration",
+                caption: "Screenshot showing the problem with the filtration.",
+              },
+            },
+            { type: "h3", text: "Problem 4 — Need to use nested tables and datasets" },
+            {
+              type: "p",
+              html: "In the previous version, when the user displayed details about a record of data, a new pop-up was opened. And again, if the user wanted to see more details about data already displayed on the pop-up, the next pop-up was displayed. To repair this problematic navigation model I had to come up with a completely new structure of the user interface.",
+            },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610467efefee0df2f9a0bc36_pse4.png",
+                alt: "Screenshot with visualisation of problems with using too many popups",
+                caption: "Screenshot with visualisation of problems with using too many pop-ups.",
+              },
+            },
+          ],
+        },
+        {
+          id: "phase-two",
+          title: "Modelling / prototype",
+          blocks: [
+            {
+              type: "p",
+              html: "The next phase started with the presentation of the usability analysis report. Together with our client, we discussed the most important problems and potential solutions. Equipped with the point of view of PSE Innovation, I could design mid-fidelity design proposals. After 3 iterations of design and feedback, we co-created concepts for improvements like:",
+            },
+            { type: "h3", text: "Improvement 1 — New scheme of data nesting" },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469328dc7b53bb22ca70b_pse5.png",
+                alt: "Visualisation of new mechanism for data nesting",
+                caption: "Visualisation of the new mechanism for data nesting.",
+              },
+            },
+            { type: "h3", text: "Improvement 2 — Improved filtering mechanism" },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469ad2f3ee9c53634a347_pse6.png",
+                alt: "Visualisation of new filtering mechanism",
+                caption: "Visualisation of the new filtering mechanism.",
+              },
+            },
+            { type: "h3", text: "Improvement 3 — Tools for more efficient data modification" },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469bb5e3f4c4cba32e530_pse7.png",
+                alt: "Visualisation of a new method of quick data modification",
+                caption: "Visualisation of a new method of quick data modification.",
+              },
+            },
+            { type: "h3", text: "Improvement 4 — Patterns for better communication between system and users" },
+            {
+              type: "figure",
+              figure: {
+                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469c714c7ba28b0208dce_pse8.png",
+                alt: "Printscreen of new patterns of communicating error messages and warning popups",
+                caption: "Printscreen of new patterns of communicating error messages and warning pop-ups.",
+              },
+            },
+          ],
+        },
+      ],
+      conclusion: {
+        heading: "The final outcomes",
+        html: "Based on the designed proposals we created a design system – so developers could use predefined elements, know the rules of developing UI of datasets, etc. As an outcome, all proposals were accepted and will be used in new systems developed by PSE Innovation.",
+      },
+    },
   },
   {
     slug: "food-allergy",
@@ -772,179 +944,6 @@ export const cases: CaseData[] = [
       conclusion: {
         heading: "The final outcomes",
         html: "Even though it wasn't a commercial product, we know that we did a good job thanks to feedback from our users. From my perspective it was a very important project, as it was my first project with a full UCD process applied. Thanks to it I could understand that products designed based on real insights and feedback are really appreciated by the final users.<br /><br /><em>\"Generally – it's so great that I can go only to the one shop and buy everything that I need.\"</em> <strong>– Karina, 28, lactose intolerant</strong><br /><br /><em>\"At the beginning, I told you that I have never used such a website. When we started to talk I thought that I wouldn't need such a thing. But after I had tried it I thought: 'Oh my God, shopping with such a website would be so easy!'\"</em> <strong>– Marta, 25, gluten intolerant</strong><br /><br /><em>\"Wow, this website is much more than expected!\"</em> <strong>– Ala, 22, allergic to dairy</strong>",
-      },
-    },
-  },
-  {
-    slug: "pse",
-    id: 6,
-    title: "PSE Innovation",
-    subtitle: "UX supporting Polish power lines",
-    category: "design",
-    description:
-      "The project required UX analysis of a few ERP systems, designing a new system which integrates functionalities of previous ones. Additionally, we created a new design system for future products of PSE Innovation.",
-    image:
-      "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e3e51cbc7dbd228bf_psecover.jpg",
-    icon: Monitor,
-    tags: ["UX Audit", "UX+UI Design"],
-    details: {
-      heroTitle: "PSE Innovation",
-      overview:
-        "The client of this project was a Polish public entity providing IT solutions for the energy sector. My task was to analyze their existing systems, indicate areas for improvement in the usability area, and then create an exemplary ERP application with corresponding system design. The new project was supposed to become a role-model system for improving existing applications and creating new ones. At every stage, I consulted progress with the client and its programmers. An important aspect of the project was an explanation of design decisions and customer education in the field of usability.",
-      context: [
-        { label: "Contribution:", value: "Usability analysis, hi-fi prototyping, negotiations with the customer" },
-        { label: "Context:", value: "Commercial project, with PSE Innovation" },
-        { label: "Team size:", value: "3 people (+ PM and UI designer)" },
-        { label: "Dates:", value: "06.2018 – 08.2018" },
-        { label: "Tools:", value: "Adobe XD" },
-      ],
-      mainOutcomes: {
-        heading: "The main deliverables / learning points",
-        items: [
-          "The audit was very extensive – it included 3 different ERP systems that were designed by programmers, so in consequence the systems had to be redesigned from scratch.",
-          "ERP systems used a multi-level data structure, which was a serious challenge in visualization and designing interaction for each level of data.",
-          "It was a cooperation with a client inexperienced in UX design, so translating the project and comparing different solutions was very important to establish further success of the project.",
-          "The process of creating system design – it turns out that it should be an iterative process, and a good design system should be created based on the needs of the system, which clarified continuously during the project.",
-        ],
-        outro:
-          "As a result of the cooperation, high-fidelity mock-ups of an exemplary ERP system were created, together with the design of the system and a description of interactions. The client planned to use them in its future projects.",
-      },
-      processCards: [
-        {
-          iconSrc: LOUPE,
-          anchor: "phase-one",
-          title: "Exploration",
-          lines: ["Review of stakeholder needs", "Usability audit"],
-        },
-        {
-          iconSrc: LAYOUT,
-          anchor: "phase-two",
-          title: "Modelling / prototype",
-          lines: ["Medium-fi mockups", "Design system"],
-        },
-      ],
-      phaseSections: [
-        {
-          id: "phase-one",
-          title: "Exploration",
-          blocks: [
-            {
-              type: "p",
-              html: "Our team was requested to help improve ERP solutions developed by PSE Innovation – a Polish public entity created to support power-network companies and their employees. They had already designed and developed 3 different systems, but without the help of any UX specialist. Apart from major usability problems, the lack of a coherent design system implied difficulties with further development. Our promise was to deliver knowledge and tools which would help them to create better systems.",
-            },
-            {
-              type: "p",
-              html: "As a first step, my colleague delivered training about usability and user experience to the whole team of PSE Innovation – developers, project managers, system analysts. We wanted to make sure that the PSE team would not only listen to our advice, but would co-create the system with us. The next big step was 100% my task – usability evaluation of all systems. As a reference source, I used Nielsen's Heuristics, Gestalt design principles and industrial benchmarks. During that phase, I discovered 32 areas for improvement, including 13 of the most crucial ones. Here are some examples of them:",
-            },
-            { type: "h3", text: "Problem 1 — Generic, non-contextual copy on buttons related to undo, overwrite and deleting data (or interrupting processes)" },
-            {
-              type: "p",
-              html: "In the case of confirmation pop-ups it's better to use customized messages and texts on the buttons. There was also inconsistent use of red colour for buttons – once it was used for closing a pop-up window, another time for deleting data.",
-            },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610466c7384a70f0e48de2bd_pse1.png",
-                alt: "Screenshot with visualisation of problems with the buttons",
-                caption: "Screenshot with visualisation of problems with the buttons.",
-              },
-            },
-            { type: "h3", text: "Problem 2 — Using many \"saving buttons\" on the same screen" },
-            {
-              type: "p",
-              html: "Due to nesting multiple forms on the same page, users might be confused whether they should use only one or more buttons, and what is the correct sequence of use – it would be better if there were no nested forms on the same page.",
-            },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6104674925bbb77a4996a6bb_pse2.png",
-                alt: "Screenshot with visualisation of problems with using too many buttons",
-                caption: "Screenshot with visualisation of problems with using too many buttons.",
-              },
-            },
-            { type: "h3", text: "Problem 3 — Major problems with the records filtration mechanism" },
-            {
-              type: "list",
-              items: [
-                "Filtration looked and worked a bit different in each application",
-                "In one system filters were in a place that didn't correspond to related data",
-                "In the case of some tables dynamic filtration was implemented, but in other cases – not",
-                "After applying filters, there was no feedback that they had been applied",
-              ],
-            },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6104677b18905c6ba7ec1aab_pse3.png",
-                alt: "Screenshot showing the problem with the filtration",
-                caption: "Screenshot showing the problem with the filtration.",
-              },
-            },
-            { type: "h3", text: "Problem 4 — Need to use nested tables and datasets" },
-            {
-              type: "p",
-              html: "In the previous version, when the user displayed details about a record of data, a new pop-up was opened. And again, if the user wanted to see more details about data already displayed on the pop-up, the next pop-up was displayed. To repair this problematic navigation model I had to come up with a completely new structure of the user interface.",
-            },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610467efefee0df2f9a0bc36_pse4.png",
-                alt: "Screenshot with visualisation of problems with using too many popups",
-                caption: "Screenshot with visualisation of problems with using too many pop-ups.",
-              },
-            },
-          ],
-        },
-        {
-          id: "phase-two",
-          title: "Modelling / prototype",
-          blocks: [
-            {
-              type: "p",
-              html: "The next phase started with the presentation of the usability analysis report. Together with our client, we discussed the most important problems and potential solutions. Equipped with the point of view of PSE Innovation, I could design mid-fidelity design proposals. After 3 iterations of design and feedback, we co-created concepts for improvements like:",
-            },
-            { type: "h3", text: "Improvement 1 — New scheme of data nesting" },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469328dc7b53bb22ca70b_pse5.png",
-                alt: "Visualisation of new mechanism for data nesting",
-                caption: "Visualisation of the new mechanism for data nesting.",
-              },
-            },
-            { type: "h3", text: "Improvement 2 — Improved filtering mechanism" },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469ad2f3ee9c53634a347_pse6.png",
-                alt: "Visualisation of new filtering mechanism",
-                caption: "Visualisation of the new filtering mechanism.",
-              },
-            },
-            { type: "h3", text: "Improvement 3 — Tools for more efficient data modification" },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469bb5e3f4c4cba32e530_pse7.png",
-                alt: "Visualisation of a new method of quick data modification",
-                caption: "Visualisation of a new method of quick data modification.",
-              },
-            },
-            { type: "h3", text: "Improvement 4 — Patterns for better communication between system and users" },
-            {
-              type: "figure",
-              figure: {
-                src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/610469c714c7ba28b0208dce_pse8.png",
-                alt: "Printscreen of new patterns of communicating error messages and warning popups",
-                caption: "Printscreen of new patterns of communicating error messages and warning pop-ups.",
-              },
-            },
-          ],
-        },
-      ],
-      conclusion: {
-        heading: "The final outcomes",
-        html: "Based on the designed proposals we created a design system – so developers could use predefined elements, know the rules of developing UI of datasets, etc. As an outcome, all proposals were accepted and will be used in new systems developed by PSE Innovation.",
       },
     },
   },

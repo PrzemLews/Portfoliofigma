@@ -396,7 +396,7 @@ export default function CaseStudy() {
       ))}
 
       {/* Conclusion */}
-      <section className="border-b border-gray-200">
+      <section className="bg-[#FDF7F2] border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-16">
           <h2 className="text-[48px] font-bold text-[#374151] mb-6 leading-tight">
             {conclusion.heading ?? "The outcomes"}

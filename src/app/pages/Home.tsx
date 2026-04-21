@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Sparkles, Users, Lightbulb } from "lucide-react";
+import { Target, PenTool, Lightbulb } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import prmImage from "../../imports/jaja4.png";
 
@@ -13,7 +13,7 @@ export default function Home() {
 
   const services = [
     {
-      icon: Sparkles,
+      icon: Target,
       title: "UX Strategy",
       description: "I can set up the right metrics for your product and build a design strategy focused on improving them. Every decision we make together is tied to measurable outcomes — so you always know what's working and why",
       color: "#FFC133",
@@ -25,7 +25,7 @@ export default function Home() {
       color: "#FF8A5B",
     },
     {
-      icon: Users,
+      icon: PenTool,
       title: "Product Design",
       description: "I specialize in design for complex commercial/in-house systems - so they can serve users well, look good, and fulfill their business goal. I know how to cooperate with developers, engage business in the process.",
       color: "#10B981",
