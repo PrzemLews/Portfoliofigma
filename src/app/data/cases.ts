@@ -505,7 +505,7 @@ export const cases: CaseData[] = [
       ],
       conclusion: {
         heading: "The conclusion",
-        html: "We did not manage to design a menu which, compared to the traditional flat one, would perform better in the sense of usability. However, through the following experiment, we found out how handheld / contextual 3D menus could be improved. Those are mentioned in \"The main deliverables / learning points\" at the beginning of this case.<br /><br />Full research report available at: <a href=\"https://www.researchgate.net/publication/348923969_Usability_of_Handheld_VR_menus_-_Research_project\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#F09065] underline hover:text-[#374151] transition-colors\"><strong>Usability of Handheld VR menus – Research project</strong></a> (ResearchGate).",
+        html: "We did not manage to design a menu which, compared to the traditional flat one, would perform better in the sense of usability. However, through the following experiment, we found out how handheld / contextual 3D menus could be improved. Those are mentioned in \"The main deliverables / learning points\" at the beginning of this case.<br /><br />Full research report available at: <a href=\"https://www.researchgate.net/publication/353527418_Usability_of_Handheld_VR_menus\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-[#F09065] underline hover:text-[#374151] transition-colors\"><strong>Usability of Handheld VR menus – Research project</strong></a> (ResearchGate).",
       },
     },
   },
