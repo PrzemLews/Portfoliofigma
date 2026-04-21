@@ -324,11 +324,13 @@ export default function CaseIng() {
                 <strong className="text-[#374151]">Solution 1C)</strong> The original registration flow had no step for adding collaborators, so I redesigned it so users could first invite colleagues to work on the form together, then proceed to the questions.
               </p>
               <figure className="border-4 border-[#374151] overflow-hidden">
-                <img
-                  src="/UX-Portfolio/Set up collaborators.png"
-                  alt="NDApp – Set up collaborators screen"
-                  className="w-full object-cover"
-                />
+                <div className="relative overflow-hidden" style={{ paddingBottom: "53.5%" }}>
+                  <img
+                    src="/UX-Portfolio/Set up collaborators.png"
+                    alt="NDApp – Set up collaborators screen"
+                    className="absolute top-0 left-0 w-full"
+                  />
+                </div>
               </figure>
             </div>
           </div>
@@ -392,8 +394,19 @@ export default function CaseIng() {
           <p className="text-base text-gray-600 leading-relaxed mb-6">
             The hypothesis challenged the most was that users would recognise from the interface that they could collaborate on the vendor questionnaire. While they generally had no trouble completing the prototype flow and showed good intuition for most new elements, they were hesitant about whether collaboration was actually possible — and unsure whether saving would preserve their progress. Based on these findings I made three changes:
           </p>
-          <ul className="text-base text-gray-600 leading-relaxed list-[upper-alpha] pl-6 space-y-2">
+          <ul className="text-base text-gray-600 leading-relaxed list-decimal pl-6 space-y-2">
             <li>Added explanatory text above the "add collaborators" section.</li>
+          </ul>
+          <figure className="border-4 border-[#374151] overflow-hidden mt-4 mb-6">
+            <div className="relative overflow-hidden" style={{ paddingBottom: "52%" }}>
+              <img
+                src="/UX-Portfolio/setup collabo fix.png"
+                alt="NDApp – Set up collaborators screen with updated instructional text"
+                className="absolute top-0 left-0 w-full"
+              />
+            </div>
+          </figure>
+          <ul className="text-base text-gray-600 leading-relaxed list-decimal pl-6 space-y-2" start={2}>
             <li>Added a comment mode to the questionnaire — a pattern users already knew from other parts of the system — to signal that collaboration was possible.</li>
             <li>Changed the button label from "Save" to "Save the Progress" to make the save behaviour unambiguous.</li>
           </ul>
