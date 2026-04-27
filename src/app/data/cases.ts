@@ -13,8 +13,9 @@ export type Figure = {
 
 export type ContentBlock =
   | { type: "p"; html: string }
-  | { type: "list"; intro?: string; items: string[] }
+  | { type: "list"; intro?: string; items: string[]; ordered?: boolean; start?: number }
   | { type: "h3"; text: string }
+  | { type: "h6"; text: string }
   | { type: "figure"; figure: Figure }
   | { type: "figureRow"; figures: Figure[] }
   | { type: "quote"; html: string; attribution?: string };
@@ -99,7 +100,7 @@ export const cases: CaseData[] = [
     subtitle: "How to improve an IoT design process?",
     category: "research",
     description:
-      "I looked for a way to improve the experience of participating in an IoT design process. As a result of individual interviews and RITE testing, I designed IoT Solution Advisor - a platform for matching system requirements with an IoT technology stack.",
+      "I looked for a way to improve the experience of participating in an IoT design process. As a result of individual interviews and RITE testing, I designed IoT Solution Advisor - a platform for matching system requirements with an IoT technology stack.<br />This project was the foundation of my Master's Thesis.",
     image:
       "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/61030d6e7ff1602f83c7a8e2_erikson2.png",
     icon: Cpu,
@@ -324,7 +325,7 @@ export const cases: CaseData[] = [
     slug: "vr",
     id: 3,
     title: "UX Research in VR",
-    cardTitle: "UX\nResearch\nin VR",
+    cardTitle: "UX Research\nin VR",
     subtitle: "What is the best menu for VR experiences?",
     category: "research",
     description:
@@ -523,7 +524,7 @@ export const cases: CaseData[] = [
     image:
       "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6103317e3e51cbc7dbd228bf_psecover.jpg",
     icon: Monitor,
-    tags: ["UX Audit", "UX+UI Design"],
+    tags: ["UX Audit", "UX+UI Design", "Design System"],
     details: {
       heroTitle: "PSE Innovation",
       overview:
@@ -693,11 +694,11 @@ export const cases: CaseData[] = [
     subtitle: "Technology vs allergies. Who would win?",
     category: "design",
     description:
-      "My university designed a non-commercial product for those who can't eat everything. Thanks to the database of products, our users could go exactly where they would find everything that they need and stay inspired for their daily diet.",
+      "An 8-month UX project for people with food allergies, helping them find stores that actually stock what they need, without the diet getting boring. Research, prototyping, two rounds of usability tests.",
     image:
       "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109612e8870c62666a65f78_squirrel.jpg",
     icon: Utensils,
-    tags: ["UX Research", "UX+UI Design"],
+    tags: ["UX Research", "UX+UI Design", "Mobile"],
     details: {
       heroTitle: "Healthy Squirrel",
       overview:

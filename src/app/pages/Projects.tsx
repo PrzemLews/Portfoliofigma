@@ -47,8 +47,15 @@ export default function Projects() {
                       <ImageWithFallback
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-left"
                       />
+                      {(project.slug === "ai-validation" || project.slug === "vendors") && (
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 pointer-events-none"
+                          style={{ background: "linear-gradient(to right, rgba(156,163,175,0.85) 0%, rgba(156,163,175,0) 50%)" }}
+                        />
+                      )}
                       <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                         {project.tags.map((tag, index) => (
                           <span
@@ -72,11 +79,11 @@ export default function Projects() {
                         </Link>
                       </div>
                       <div className="mb-3 pr-16">
-                        <h3 className="text-[40px] font-bold text-[#261d08] inline" style={{ textDecoration: 'underline', textDecorationColor: '#FFC133', textDecorationThickness: '4px', textUnderlineOffset: '2px' }}>
-                          {project.title}
+                        <h3 className="text-[40px] font-bold text-[#261d08] inline" style={{ textDecoration: 'underline', textDecorationColor: '#FFC133', textDecorationThickness: '4px', textUnderlineOffset: '2px', whiteSpace: 'pre-line' }}>
+                          {project.cardTitle ?? project.title}
                         </h3>
                       </div>
-                      <p className="text-gray-600 mb-4">{project.description}</p>
+                      <p className="text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: project.description }} />
                     </div>
                   </div>
                 </div>

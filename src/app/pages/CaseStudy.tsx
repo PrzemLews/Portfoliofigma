@@ -67,8 +67,9 @@ const DEFAULT_PHASE_SECTIONS: { id: string; title: string; blocks: ContentBlock[
       { type: "p", html: "The first stage of the project was about learning what the typical users' struggles with the questions were specifically. To discover these patterns, I <strong>scheduled 6 interviews with people who advise our users on the content and with people who do the review and audits</strong>. Based on the interviews I <strong>created a list of the typical mistakes people do</strong>." },
       { type: "p", html: "The insights from these conversations were invaluable in understanding not just what mistakes were being made, but <strong>why they were happening and what patterns emerged</strong> across different types of documentation. Some of these were as simple as just trying to ignore the question, confusion of similar terms, invalid references, or generic answers without referring to a specific process. I <strong>translated these problem statements into a set of rules applicable to different questions</strong> that we ask in the forms. For example:" },
       { type: "list", items: [
-        "Users don't describe what their project is about - check whether the \"project information\" includes: project name, project dates, project purpose.",
-        "Users confuse \"project information\" with \"document information\" fields - check whether \"project information\" does not include any description related to concept of a document.",
+        "Users don't input any numerical values that are quite relevant for the process.",
+        "Users confuse different questions, providing answers to a different question than they were supposed to.",
+        "The answers are missing the necessary level of detail.",
       ] },
       { type: "p", html: "This enabled us to think about how we could actually employ a real use case for artificial intelligence; however, many questions about the shape of the solution were still unanswered." },
     ],
@@ -78,25 +79,29 @@ const DEFAULT_PHASE_SECTIONS: { id: string; title: string; blocks: ContentBlock[
     title: "Solution Scoping, Stakeholder Alignment",
     blocks: [
       { type: "p", html: "On the scoping phase I had to think about the following aspects:" },
-      { type: "list", items: [
-        "Should AI autocorrect the answers, or should we just let the users know what inputs are wrong?",
-        "When the solution provides wrong suggestion, how users can react to that?",
-        "How to motivate users to address as many remarks as possible?",
-        "Incorporate the solution into an already cluttered form? We already had commenting and compare-changes mode - not much empty space left for yet another feature.",
-        "How to integrate the solution with UI, without disturbing users while they're typing?",
-      ] },
-      { type: "p", html: "<strong>1. Feedback, not autocorrect.</strong> Together with the business stakeholders we made a decision to rather <strong>inform users what mistakes they had made and ask them for the \"manual\" improvement</strong>, rather than provide an autocorrect or text to paste. Primarily because most likely the AI wouldn't have a good source of truth. The other aspect was that we wanted <strong>users to feel the personal responsibility for the content</strong>, which we felt would be diminished if AI replaced them with figuring out the content. Whenever a mistake happened, the solution highlighted the paragraphs with the issues, and users were asked to address a specific issue." },
-      { type: "p", html: "<strong>2. Reusing familiar patterns.</strong> To <strong>reduce the number of design patterns we were familiarising our users with</strong>, I wanted to reuse patterns from an already existing, somewhat similar feature - comment mode. Since we could think of the AI suggestions as comments, but provided by the machine, we could also reuse the mechanism of signalling a comment, showing their number, and resolving them." },
-      { type: "figure", figure: { src: "/UX-Portfolio/validation-screen-1.png", alt: "AI validation indicators on the New Headcount Request form", maxWidth: "70%" } },
+      { type: "h6", text: "1. Should AI autocorrect the answers, or should we just let the users know what inputs are wrong?" },
+      { type: "p", html: "<strong>Solution: Feedback, not autocorrect.</strong> Together with the business stakeholders we made a decision to rather <strong>inform users what mistakes they had made and ask them for the \"manual\" improvement</strong>, rather than provide an autocorrect or text to paste. Primarily because most likely the AI wouldn't have a good source of truth. The other aspect was that we wanted <strong>users to feel the personal responsibility for the content</strong>, which we felt would be diminished if AI replaced them with figuring out the content. Whenever a mistake happened, the solution highlighted the paragraphs with the issues, and users were asked to address a specific issue." },
+      { type: "h6", text: "2. How to incorporate the solution into an already cluttered form? We already had commenting and compare-changes mode - not much empty space left for yet another feature." },
+      { type: "p", html: "<strong>Solution: Reusing familiar patterns.</strong> To <strong>reduce the number of design patterns we were familiarising our users with</strong>, I wanted to reuse patterns from an already existing, somewhat similar feature - comment mode. Since we could think of the AI suggestions as comments, but provided by the machine, we could also reuse the mechanism of signalling a comment, showing their number, and resolving them." },
+      { type: "figure", figure: { src: "/UX-Portfolio/nicerpicture.png", alt: "AI validation indicators on the New Headcount Request form", maxWidth: "70%" } },
       { type: "figureRow", figures: [
         { src: "/UX-Portfolio/comment_comparison.png", alt: "Comment mode reused as the pattern for AI suggestions", objectPosition: "center 35%" },
-        { src: "/UX-Portfolio/validation-screen-2.png", alt: "Feedback-based AI validation highlighting issues in the form", objectPosition: "right center" },
+        { src: "/UX-Portfolio/validation-screen-4.png", alt: "Feedback-based AI validation highlighting issues in the form", objectPosition: "right center" },
       ] },
-      { type: "p", html: "<strong>3. Delayed, non-disruptive notifications.</strong> To <strong>avoid constant user disruptions with incoming feedback</strong>, we decided on a mechanism of delayed feedback without a need for users to wait before proceeding to the next fields. On the other hand, we didn't want to postpone the feedback too much, as users would forget the context necessary for the content improvement. Once the field is evaluated by the AI, users would receive a gentle notification in the corner of the screen." },
-      { type: "p", html: "<strong>4. Critical vs. non-critical issues.</strong> Not all user mistakes should have the same weight. For example, imprecise language shouldn't be treated the same way as inputting \"lorem ipsum\" content. That's why I <strong>proposed classifying mistakes into two categories: critical mistake and non-critical issue</strong>. The solution was designed so that users wouldn't be able to proceed with a critical mistake. However, they should be able to proceed with a non-critical issue, unless they had accumulated too many of them. We <strong>set up a threshold for the number of acceptable non-critical issues</strong>, as well as a mechanism to inform the users about the <strong>overall score of the document</strong>. Users could check their score ad hoc, but also they would be informed about the score before marking the document as completed." },
-      { type: "figure", figure: { src: "/UX-Portfolio/critical mistake.png", alt: "Critical mistake highlighted on a form field, blocking submission", maxWidth: "70%" } },
-      { type: "p", html: "<strong>5. Reporting AI mistakes.</strong> Though we felt like we had exhausted the list of potential issues, we couldn't be 100% sure. Also, we had to <strong>account for AI hallucination scenarios</strong>. Therefore, I <strong>designed the mechanism to report a mistake of the validation agent</strong>. Whenever a user reported a specific suggestion as invalid, this specific criterion wouldn't be checked ever again against the text provided for the input. To decrease the chance of reporting the mistake just to be able to ignore validation, the copy suggested that each report will be <strong>checked for improving the accuracy of the solution</strong> - and that wasn't a lie, we wanted to see these reports, quantify them, and act upon them." },
-      { type: "figure", figure: { src: "/UX-Portfolio/validation-screen-3.png", alt: "Reporting AI validation mistakes mechanism", maxWidth: "70%" } },
+      { type: "h6", text: "3. When the solution provides wrong suggestion, how users can react to that?" },
+      { type: "p", html: "<strong>Solution: Reporting AI mistakes.</strong> Though we felt like we had exhausted the list of potential issues, we couldn't be 100% sure. Also, we had to <strong>account for AI hallucination scenarios</strong>. Therefore, I <strong>designed the mechanism to report a mistake of the validation agent</strong>. Whenever a user reported a specific suggestion as invalid, this specific criterion wouldn't be checked ever again against the text provided for the input. To decrease the chance of reporting the mistake just to be able to ignore validation, the copy suggested that each report will be <strong>checked for improving the accuracy of the solution</strong> - and that wasn't a lie, we wanted to see these reports, quantify them, and act upon them." },
+      { type: "figure", figure: { src: "/UX-Portfolio/critical mistake.png", alt: "Reporting AI validation mistakes mechanism", maxWidth: "70%" } },
+      { type: "h6", text: "4. How to motivate users to address as many remarks as possible?" },
+      { type: "p", html: "<strong>Solution:</strong> To inform users how they were doing with the quality of the application, I introduced a <strong>\"Quality Score\"</strong> — a percentage score which informed users about how far they are from what we consider being 100% right. I proposed a <strong>75% threshold</strong> under which users wouldn't be able to <strong>proceed to review stage</strong>. Users were informed about the quality score at the bottom of the screen, they could also click on the score to <strong>see what issues are contributing to the lowered score</strong>. Also, they were reminded about the score while they click on the \"Send for Review\" button." },
+      { type: "figure", figure: { src: "/UX-Portfolio/q-score-1.png", alt: "Quality Score Summary showing score below threshold", maxWidth: "70%" } },
+      { type: "figureRow", figures: [
+        { src: "/UX-Portfolio/q-score-2.png", alt: "Quality Score Summary showing acceptable score" },
+        { src: "/UX-Portfolio/q-score-3.png", alt: "Quality Score indicator at the bottom of the form" },
+      ] },
+      { type: "p", html: "<strong>Solution: Critical vs. non-critical issues.</strong> Not all user mistakes should have the same weight. For example, imprecise language shouldn't be treated the same way as inputting \"lorem ipsum\" content. That's why I <strong>proposed classifying mistakes into two categories: critical mistake and non-critical issue</strong>. The solution was designed so that users wouldn't be able to proceed with a critical mistake. However, they should be able to proceed with a non-critical issue, unless they had accumulated too many of them. We <strong>set up a threshold for the number of acceptable non-critical issues</strong>, as well as a mechanism to inform the users about the <strong>overall score of the document</strong>. Users could check their score ad hoc, but also they would be informed about the score before marking the document as completed." },
+      { type: "h6", text: "5. How to integrate the solution with UI, without disturbing users while they're typing?" },
+      { type: "p", html: "<strong>Solution: Delayed, non-disruptive notifications.</strong> To <strong>avoid constant user disruptions with incoming feedback</strong>, we decided on a mechanism of delayed feedback without a need for users to wait before proceeding to the next fields. On the other hand, we didn't want to postpone the feedback too much, as users would forget the context necessary for the content improvement. Once the field is evaluated by the AI, users would receive a gentle notification in the corner of the screen." },
+      { type: "figure", figure: { src: "/UX-Portfolio/message-box.png", alt: "Delayed non-disruptive notification about AI suggestions", maxWidth: "70%" } },
     ],
   },
 ];
@@ -112,16 +117,21 @@ function renderBlock(block: ContentBlock, idx: number) {
     );
   }
   if (block.type === "list") {
+    const ListTag = block.ordered ? "ol" : "ul";
+    const listClass = block.ordered ? "list-decimal" : "list-disc";
     return (
       <div key={idx} className="mb-6">
         {block.intro && (
           <p className="text-base text-gray-600 leading-relaxed mb-2" dangerouslySetInnerHTML={{ __html: block.intro }} />
         )}
-        <ul className="text-base text-gray-600 leading-relaxed list-disc pl-6 space-y-1">
+        <ListTag
+          className={`text-base text-gray-600 leading-relaxed ${listClass} pl-6 space-y-1`}
+          {...(block.ordered && block.start ? { start: block.start } : {})}
+        >
           {block.items.map((item, i) => (
             <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
-        </ul>
+        </ListTag>
       </div>
     );
   }
@@ -168,7 +178,7 @@ function renderBlock(block: ContentBlock, idx: number) {
               {fig.zoomable
                 ? <Lightbox src={fig.src} alt={fig.alt ?? ""} caption={fig.caption} />
                 : hasCrop
-                  ? <div className="w-full aspect-[4/3] overflow-hidden"><ImageWithFallback src={fig.src} alt={fig.alt ?? ""} className="w-full h-full object-cover" style={{ objectPosition: fig.objectPosition ?? "center center" }} /></div>
+                  ? <div className="w-full aspect-[1/1] overflow-hidden"><ImageWithFallback src={fig.src} alt={fig.alt ?? ""} className="w-full h-full object-cover" style={{ objectPosition: fig.objectPosition ?? "center center" }} /></div>
                   : <div className="block w-full"><ImageWithFallback src={fig.src} alt={fig.alt ?? ""} className="w-full h-auto block" /></div>}
             </div>
             {fig.caption && (
@@ -192,11 +202,74 @@ function renderBlock(block: ContentBlock, idx: number) {
       </blockquote>
     );
   }
+  if (block.type === "h6") {
+    return (
+      <h5 key={idx} className="text-[20px] font-semibold text-[#374151] mb-2 mt-4">
+        {block.text}
+      </h5>
+    );
+  }
   // h3
   return (
     <h3 key={idx} className="text-[24px] font-bold text-[#374151] mb-3 mt-2">
       {block.text}
     </h3>
+  );
+}
+
+function PreviousStateDiagram() {
+  const problems = [
+    {
+      title: "Partial answers",
+      desc: "Users skipped or only half-answered open-ended questions.",
+      icon: (
+        <svg viewBox="0 0 60 60" fill="none">
+          <rect x="10" y="10" width="40" height="40" fill="#FFC133" stroke="#374151" strokeWidth="3" />
+          <line x1="16" y1="22" x2="44" y2="22" stroke="#374151" strokeWidth="3" />
+          <line x1="16" y1="32" x2="38" y2="32" stroke="#374151" strokeWidth="3" />
+          <line x1="16" y1="42" x2="26" y2="42" stroke="#374151" strokeWidth="3" strokeDasharray="3 3" />
+        </svg>
+      ),
+    },
+    {
+      title: "Ineffective guidance",
+      desc: "Tooltips and guides didn't help users write better answers.",
+      icon: (
+        <svg viewBox="0 0 60 60" fill="none">
+          <path d="M12 14 H44 A4 4 0 0 1 48 18 V36 A4 4 0 0 1 44 40 H30 L22 50 V40 H16 A4 4 0 0 1 12 36 Z" fill="#FFC133" stroke="#374151" strokeWidth="3" strokeLinejoin="round" />
+          <text x="28" y="32" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#374151" fontFamily="system-ui, sans-serif">?</text>
+          <line x1="10" y1="50" x2="50" y2="10" stroke="#F09065" strokeWidth="4" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: "No specialised review",
+      desc: "Reviewers weren't subject-matter experts, so issues slipped through.",
+      icon: (
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="26" cy="26" r="14" fill="#FFC133" stroke="#374151" strokeWidth="3" />
+          <line x1="36" y1="36" x2="50" y2="50" stroke="#374151" strokeWidth="4" strokeLinecap="round" />
+          <text x="26" y="32" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#374151" fontFamily="system-ui, sans-serif">?</text>
+        </svg>
+      ),
+    },
+  ];
+  return (
+    <div className="mt-12">
+      <h3 className="text-[20px] font-bold text-[#374151] mb-6">General problem statements we started with</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {problems.map((p) => (
+          <div key={p.title} className="relative">
+            <div className="absolute inset-0 bg-[#FFC133] transform translate-x-1.5 translate-y-1.5 border-4 border-[#374151]" />
+            <div className="relative bg-white border-4 border-[#374151] p-5 h-full">
+              <div className="w-12 h-12 mb-3">{p.icon}</div>
+              <h4 className="text-[16px] font-bold text-[#374151] mb-1">{p.title}</h4>
+              <p className="text-[14px] text-gray-600 leading-snug">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -417,6 +490,7 @@ export default function CaseStudy() {
               {phase.title}
             </h2>
             {phase.blocks.map((block, i) => renderBlock(block, i))}
+            {slug === "ai-validation" && phase.id === "phase-one" && <PreviousStateDiagram />}
           </div>
         </section>
       ))}
