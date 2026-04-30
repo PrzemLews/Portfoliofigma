@@ -10,6 +10,7 @@ export type Figure = {
   maxWidth?: string; // e.g. "70%" or "400px" - wraps figure in a centred container
   objectPosition?: string; // e.g. "center 20%" - controls crop when used in figureRow
   aspectRatio?: string;   // e.g. "4/3" - locks height of the figure cell in a figureRow
+  mobileFrame?: boolean;  // wraps the image in a mobile-app status bar (time + signal/wifi/battery)
 };
 
 export type ContentBlock =
@@ -894,16 +895,19 @@ export const cases: CaseData[] = [
                   src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109ab5571bb812eb10e9192_c1.png",
                   alt: "Exclusion of ingredients feature screenshot",
                   caption: "<strong>Exclusion of ingredients</strong> – global filter setting: by applying predefined filters (or adding customized ones), users can be sure displayed results won't include marked allergens.",
+                  mobileFrame: true,
                 },
                 {
                   src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109ab553e26c97c888e38a9_c2.png",
                   alt: "Multi-input search tool feature screenshot",
                   caption: "<strong>Multi-input search tool</strong> – allows inserting more than one product with a single query to find a full list across different shops.",
+                  mobileFrame: true,
                 },
                 {
                   src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109ab55500241c136e5b477_c3.png",
                   alt: "Snack inspirations feature screenshot",
                   caption: "<strong>Snack inspirations</strong> – suggestions for new snacks and products not previously encountered, responding to the need for a more diverse diet.",
+                  mobileFrame: true,
                 },
               ],
             },
@@ -924,6 +928,7 @@ export const cases: CaseData[] = [
                 alt: "Landing page optimization",
                 caption: "Landing page optimization – redesign based on testing.",
                 narrow: true,
+                mobileFrame: true,
               },
             },
             { type: "h3", text: "2. Findability of product categories" },
@@ -940,12 +945,14 @@ export const cases: CaseData[] = [
                   alt: "Before – categories findability",
                   caption: "Before – categories findability.",
                   aspectRatio: "9/16",
+                  mobileFrame: true,
                 },
                 {
                   src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109ba33396379e10f5f583f_c7.png",
                   alt: "After – categories findability",
                   caption: "After – categories findability.",
                   aspectRatio: "9/16",
+                  mobileFrame: true,
                 },
               ],
             },
@@ -963,12 +970,14 @@ export const cases: CaseData[] = [
                   alt: "Before – food inspirations affordance",
                   caption: "Before – food inspirations affordance.",
                   aspectRatio: "9/16",
+                  mobileFrame: true,
                 },
                 {
                   src: "https://cdn.prod.website-files.com/60f82d3f9214a9503e13d8fc/6109ba32b8a8da6c024e3c06_c9.png",
                   alt: "After – food inspirations affordance",
                   caption: "After – food inspirations affordance.",
                   aspectRatio: "9/16",
+                  mobileFrame: true,
                 },
               ],
             },

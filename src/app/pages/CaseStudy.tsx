@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Signal, Wifi, BatteryFull, Home, Search, Heart, User } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { getCaseBySlug, getOtherCases, type ContentBlock } from "../data/cases";
 import Lightbox from "../components/Lightbox";
@@ -12,6 +12,30 @@ import PseSaveButtonsMock from "../components/PseSaveButtonsMock";
 import ScaledFrame from "../components/ScaledFrame";
 
 const DOT_COUNT = 5;
+
+function MobileStatusBar() {
+  return (
+    <div className="flex items-center justify-between px-4 py-1 bg-white text-[#374151] text-[11px] font-semibold border-b-2 border-[#374151]">
+      <span>9:41</span>
+      <div className="flex items-center gap-1">
+        <Signal className="w-3 h-3" strokeWidth={2.5} />
+        <Wifi className="w-3 h-3" strokeWidth={2.5} />
+        <BatteryFull className="w-4 h-4" strokeWidth={2.5} />
+      </div>
+    </div>
+  );
+}
+
+function MobileNavBar() {
+  return (
+    <div className="flex items-center justify-around px-4 py-2 bg-white text-[#374151] border-t-2 border-[#374151]">
+      <Home className="w-5 h-5" strokeWidth={2.5} fill="currentColor" />
+      <Search className="w-5 h-5" strokeWidth={2.5} />
+      <Heart className="w-5 h-5" strokeWidth={2.5} />
+      <User className="w-5 h-5" strokeWidth={2.5} />
+    </div>
+  );
+}
 
 const DEFAULT_CONTEXT = [
   { label: "Type:", value: "Commercial project, in-house" },
@@ -142,13 +166,15 @@ function renderBlock(block: ContentBlock, idx: number) {
     );
   }
   if (block.type === "figure") {
-    const { src, alt, caption, narrow, zoomable, maxWidth } = block.figure;
+    const { src, alt, caption, narrow, zoomable, maxWidth, mobileFrame } = block.figure;
     const inner = (
       <figure className={narrow ? "" : "my-8"}>
         <div className="border-4 border-[#374151] overflow-hidden bg-white">
+          {mobileFrame && <MobileStatusBar />}
           {zoomable
             ? <Lightbox src={src} alt={alt ?? ""} caption={caption} />
             : <div className="block w-full"><ImageWithFallback src={src} alt={alt ?? ""} className="w-full h-auto block" /></div>}
+          {mobileFrame && <MobileNavBar />}
         </div>
         {caption && (
           <figcaption className="mt-3 text-sm text-gray-500 italic leading-relaxed" dangerouslySetInnerHTML={{ __html: caption }} />
@@ -186,6 +212,7 @@ function renderBlock(block: ContentBlock, idx: number) {
         {block.figures.map((fig, i) => (
           <figure key={i}>
             <div className="border-4 border-[#374151] overflow-hidden bg-white">
+              {fig.mobileFrame && <MobileStatusBar />}
               {fig.aspectRatio ? (
                 <div className="w-full [&>button]:h-full [&>button]:block" style={{ aspectRatio: fig.aspectRatio }}>
                   {fig.zoomable
@@ -197,6 +224,7 @@ function renderBlock(block: ContentBlock, idx: number) {
                 : hasCrop
                   ? <div className="w-full aspect-[1/1] overflow-hidden"><ImageWithFallback src={fig.src} alt={fig.alt ?? ""} className="w-full h-full object-cover" style={{ objectPosition: fig.objectPosition ?? "center center" }} /></div>
                   : <div className="block w-full"><ImageWithFallback src={fig.src} alt={fig.alt ?? ""} className="w-full h-auto block" /></div>}
+              {fig.mobileFrame && <MobileNavBar />}
             </div>
             {fig.caption && (
               <figcaption className="mt-3 text-sm text-gray-500 italic leading-relaxed" dangerouslySetInnerHTML={{ __html: fig.caption }} />
